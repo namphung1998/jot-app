@@ -5,7 +5,9 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   EMAIL_CHANGE,
-  PASSWORD_CHANGE
+  PASSWORD_CHANGE,
+  CREATE_USER,
+  CREATE_USER_SUCCESS
 } from './types';
 
 const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
@@ -57,4 +59,32 @@ export function loginUser({ email, password }) {
       loginUserFail(dispatch);
     }
   }
+}
+
+export function createUser({ userName, email, password, passwordConfirm }) {
+  return async (dispatch) => {
+    dispatch({ type: CREATE_USER });
+
+    try {
+      let { data } = await axios({
+        url: `${ROOT_URL}/users`,
+        method: 'post',
+        data: {
+          name: userName,
+          email: email.toLowerCase(),
+          password,
+          password_confirmation: passwordConfirm
+        }
+      });
+
+      createUserSuccess(dispatch, data.user, data.auth_token);
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
+function createUserSuccess(dispatch, user, token) {
+  dispatch({ type: CREATE_USER_SUCCESS, payload: { user, token } })
 }

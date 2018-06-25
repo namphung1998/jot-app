@@ -4,12 +4,16 @@ import { Provider } from 'react-redux';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import store from './store';
 import SignInScreen from './screens/SignInScreen';
+import SignUpScreen from './screens/SignUpScreen';
 import PromptListScreen from './screens/PromptListScreen';
 
 export default class App extends React.Component {
   render() {
     const AuthNavigator = createBottomTabNavigator({
-      signIn: { screen: SignInScreen }
+      signIn: { screen: SignInScreen },
+      signUp: { screen: SignUpScreen }
+    }, {
+      navigationOptions: { tabBarVisible: false }
     });
 
     const MainNavigator = createBottomTabNavigator({

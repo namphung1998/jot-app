@@ -27,6 +27,10 @@ class SignInScreen extends Component {
     loginUser({ email: email.toLowerCase(), password });
   }
 
+  onSignUpPress = () => {
+    this.props.navigation.navigate('signUp');
+  }
+
   renderError() {
     if (this.props.error) {
       return (
@@ -47,13 +51,14 @@ class SignInScreen extends Component {
     return (
       <View style={styles.buttonContainerStyle}>
         <Button
-          containerStyle={styles.buttonStyle}
+          buttonStyle={styles.buttonStyle}
           title='Sign in'
           onPress={this.onSignInPress}
         />
         <Button
-          containerStyle={styles.buttonStyle}
+          buttonStyle={styles.buttonStyle}
           title='Sign up'
+          onPress={this.onSignUpPress}
         />
       </View>
     );
