@@ -1,12 +1,28 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
+import store from './store';
+import SignInScreen from './screens/SignInScreen';
+import PromptListScreen from './screens/PromptListScreen';
 
 export default class App extends React.Component {
   render() {
+    const AuthNavigator = createBottomTabNavigator({
+      signIn: { screen: SignInScreen }
+    });
+
+    const MainNavigator = createBottomTabNavigator({
+      auth: { screen: AuthNavigator },
+      main: { screen: PromptListScreen }
+    }, {
+      navigationOptions: { tabBarVisible: false }
+    });
+
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <Provider store={store}>
+        <MainNavigator/>
+      </Provider>
     );
   }
 }
