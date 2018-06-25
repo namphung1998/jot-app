@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { ListItem, Header } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _ from 'lodash'
@@ -19,6 +19,7 @@ class PromptListScreen extends Component {
     return (
       <ListItem
         title={item.title}
+        onPress={() => { this.props.navigation.navigate('promptDetail', { prompt: item }) }}
       />
     );
   }

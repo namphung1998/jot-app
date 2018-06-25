@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import { Header, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { createUser } from '../actions';

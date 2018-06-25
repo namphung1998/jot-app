@@ -6,6 +6,7 @@ import store from './store';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import PromptListScreen from './screens/PromptListScreen';
+import PromptDetail from "./screens/PromptDetail";
 
 export default class App extends React.Component {
   render() {
@@ -16,9 +17,14 @@ export default class App extends React.Component {
       navigationOptions: { tabBarVisible: false }
     });
 
+    const PromptNavigator = createStackNavigator({
+      promptList: { screen: PromptListScreen },
+      promptDetail: { screen: PromptDetail }
+    });
+
     const MainNavigator = createBottomTabNavigator({
       auth: { screen: AuthNavigator },
-      main: { screen: PromptListScreen }
+      main: { screen: PromptNavigator }
     }, {
       navigationOptions: { tabBarVisible: false }
     });

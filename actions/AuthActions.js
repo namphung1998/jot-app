@@ -77,6 +77,8 @@ export function createUser({ userName, email, password, passwordConfirm }) {
         }
       });
 
+      await AsyncStorage.setItem('token', data.auth_token);
+
       createUserSuccess(dispatch, data.user, data.auth_token);
 
     } catch (err) {
