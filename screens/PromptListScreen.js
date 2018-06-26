@@ -7,6 +7,14 @@ import { fetchPrompts } from "../actions";
 
 class PromptListScreen extends Component {
   componentWillMount() {
+    const willFocusSubscription = this.props.navigation.addListener(
+      'willFocus',
+      () => {
+        console.log('focused');
+        this.props.fetchPrompts(this.props.token);
+      }
+    );
+
     this.props.fetchPrompts(this.props.token);
     this.data = this.props.prompts;
   }

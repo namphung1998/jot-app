@@ -5,9 +5,17 @@ import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import BackButton from "../components/BackButton";
 
 @withMappedNavigationProps()
-class PromptDetail extends Component {
+class PromptDetailScreen extends Component {
   onBackPress = () => {
     this.props.navigation.navigate('promptList');
+  }
+
+  onReviewPress = () => {
+    this.props.navigation.navigate('submissionList');
+  }
+
+  onSubmitPress = () => {
+    this.props.navigation.navigate('submit', { prompt: this.props.prompt });
   }
 
   render() {
@@ -24,9 +32,11 @@ class PromptDetail extends Component {
           <View style={styles.buttonContainerStyle}>
             <Button
               title='Submit a Response'
+              onPress={this.onSubmitPress}
             />
             <Button
               title='Give a Review'
+              onPress={this.onReviewPress}
             />
           </View>
 
@@ -47,4 +57,4 @@ const styles = {
   },
 }
 
-export default PromptDetail;
+export default PromptDetailScreen;

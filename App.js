@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import store from './store';
 import SignInScreen from './screens/SignInScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import PromptListScreen from './screens/PromptListScreen';
-import PromptDetail from "./screens/PromptDetail";
+import PromptDetailScreen from "./screens/PromptDetailScreen";
+import SubmissionListScreen from "./screens/SubmissionListScreen";
+import SubmissionScreen from "./screens/SubmissionScreen";
 
 export default class App extends React.Component {
   render() {
@@ -17,9 +18,17 @@ export default class App extends React.Component {
       navigationOptions: { tabBarVisible: false }
     });
 
+    const PromptDetailNavigator = createStackNavigator({
+      promptDetail: { screen: PromptDetailScreen },
+      submissionList: { screen: SubmissionListScreen },
+      submit: { screen: SubmissionScreen }
+    }, {
+      navigationOptions: { header: null }
+    });
+
     const PromptNavigator = createStackNavigator({
       promptList: { screen: PromptListScreen },
-      promptDetail: { screen: PromptDetail }
+      promptDetail: { screen: PromptDetailNavigator }
     }, {
       navigationOptions: { header: null }
     });
@@ -39,11 +48,3 @@ export default class App extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
