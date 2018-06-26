@@ -11,7 +11,7 @@ class PromptDetailScreen extends Component {
   }
 
   onReviewPress = () => {
-    this.props.navigation.navigate('submissionList');
+    this.props.navigation.navigate('submissionList', { prompt: this.props.prompt });
   }
 
   onSubmitPress = () => {

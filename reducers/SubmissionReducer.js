@@ -1,4 +1,5 @@
 import {
+  FETCH_SUBMISSIONS,
   MAKE_SUBMISSION,
   MAKE_SUBMISSION_SUCCESS
 } from "../actions/types";
@@ -6,6 +7,7 @@ import {
 const INITIAL_STATE = {
   loading: false,
   submitted: false,
+  submittedList: null,
 };
 
 export default (state=INITIAL_STATE, action) => {
@@ -14,6 +16,8 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, loading: true };
     case MAKE_SUBMISSION_SUCCESS:
       return { ...state, loading: false, submitted: true };
+    case FETCH_SUBMISSIONS:
+      return { ...state, ...INITIAL_STATE, submittedList: action.payload };
     default:
       return state;
   }
