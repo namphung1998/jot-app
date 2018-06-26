@@ -4,8 +4,9 @@ import { Header, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import _ from 'lodash';
-import { fetchSubmissions } from "../actions";
+import { fetchSubmissions,selectSubmission } from "../actions";
 import BackButton from "../components/BackButton";
+import Submission from "../components/Submission";
 
 @withMappedNavigationProps()
 class SubmissionListScreen extends Component {
@@ -25,7 +26,9 @@ class SubmissionListScreen extends Component {
   }
 
   renderItem = ({ item }) => {
-    return <ListItem onPress={() => {}} title={item.user.name}/>
+    // return <ListItem onPress={() => {}} title={item.user.name}/>
+
+    return <Submission onPress={() => { this.props.selectSubmission(item.id) }} submission={item} />
   };
 
   render() {
@@ -54,8 +57,8 @@ function mapStateToProps(state) {
 
   return {
     submissions,
-    token: state.auth.token
+    token: state.auth.token,
   };
 }
 
-export default connect(mapStateToProps, { fetchSubmissions })(SubmissionListScreen);
+export default connect(mapStateToProps, { fetchSubmissions, selectSubmission })(SubmissionListScreen);

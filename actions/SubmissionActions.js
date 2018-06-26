@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
   MAKE_SUBMISSION,
   MAKE_SUBMISSION_SUCCESS,
-  FETCH_SUBMISSIONS
+  FETCH_SUBMISSIONS,
+  SELECT_SUBMISSION
 } from "./types";
 
 const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
@@ -48,4 +49,11 @@ export function fetchSubmissions({ prompt, token }) {
       console.log(err);
     }
   }
+}
+
+export function selectSubmission(id) {
+  return {
+    type: SELECT_SUBMISSION,
+    payload: id
+  };
 }
