@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import { Header, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { emailChange, passwordChange, loginUser } from '../actions';
@@ -68,6 +68,7 @@ class SignInScreen extends Component {
     return (
       <View>
         <Header
+          innerContainerStyle={{ height: Platform.OS === 'android' ? 24 : null }}
           backgroundColor='#7dc99f'
         />
         <View>

@@ -9,3 +9,5 @@ export const CREATE_USER_SUCCESS = 'create_user_success';
 export const MAKE_SUBMISSION = 'make_submission';
 export const MAKE_SUBMISSION_SUCCESS = 'make_submission_success';
 export const FETCH_SUBMISSIONS = 'fetch_submissions';
+export const SUBMIT_REVIEW = 'submit_review';
+export const SUBMIT_REVIEW_SUCCESS = 'submit_review_success';

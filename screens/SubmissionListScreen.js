@@ -25,7 +25,7 @@ class SubmissionListScreen extends Component {
   }
 
   renderItem = ({ item }) => {
-    return <ListItem title={item.user.name}/>
+    return <ListItem onPress={() => {}} title={item.user.name}/>
   };
 
   render() {
