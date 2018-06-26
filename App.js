@@ -20,6 +20,8 @@ export default class App extends React.Component {
     const PromptNavigator = createStackNavigator({
       promptList: { screen: PromptListScreen },
       promptDetail: { screen: PromptDetail }
+    }, {
+      navigationOptions: { header: null }
     });
 
     const MainNavigator = createBottomTabNavigator({
