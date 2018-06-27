@@ -10,6 +10,7 @@ import SubmissionListScreen from "./screens/SubmissionListScreen";
 import SubmissionScreen from "./screens/SubmissionScreen";
 import ReviewScreen from "./screens/ReviewScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import ReceivedReviewScreen from "./screens/ReceivedReviewScreen";
 
 export default class App extends React.Component {
   render() {
@@ -36,11 +37,18 @@ export default class App extends React.Component {
       navigationOptions: { header: null }
     });
 
+    const ProfileNavigator = createStackNavigator({
+      profile: { screen: ProfileScreen },
+      receivedReview: { screen: ReceivedReviewScreen },
+    }, {
+      navigationOptions: { header: null }
+    });
+
     const MainNavigator = createBottomTabNavigator({
       auth: { screen: AuthNavigator },
       main: { screen: createBottomTabNavigator({
           prompt: { screen: PromptNavigator },
-          profile: { screen: ProfileScreen }
+          profileNav: { screen: ProfileNavigator }
         }) }
     }, {
       navigationOptions: { tabBarVisible: false, lazy: true }
