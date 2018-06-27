@@ -1,6 +1,6 @@
 import {
-  MAKE_SUBMISSION,
-  MAKE_SUBMISSION_SUCCESS
+  SUBMIT_REVIEW,
+  SUBMIT_REVIEW_SUCCESS
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -10,9 +10,9 @@ const INITIAL_STATE = {
 
 export default (state=INITIAL_STATE, action) => {
   switch (action.type) {
-    case MAKE_SUBMISSION:
+    case SUBMIT_REVIEW:
       return { ...state, loading: true };
-    case MAKE_SUBMISSION_SUCCESS:
+    case SUBMIT_REVIEW_SUCCESS:
       return { loading: false, submitted: true };
     default:
       return state;

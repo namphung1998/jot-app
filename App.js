@@ -8,6 +8,7 @@ import PromptListScreen from './screens/PromptListScreen';
 import PromptDetailScreen from "./screens/PromptDetailScreen";
 import SubmissionListScreen from "./screens/SubmissionListScreen";
 import SubmissionScreen from "./screens/SubmissionScreen";
+import ReviewScreen from "./screens/ReviewScreen";
 
 export default class App extends React.Component {
   render() {
@@ -21,6 +22,7 @@ export default class App extends React.Component {
     const PromptDetailNavigator = createStackNavigator({
       promptDetail: { screen: PromptDetailScreen },
       submissionList: { screen: SubmissionListScreen },
+      review: { screen: ReviewScreen },
       submit: { screen: SubmissionScreen }
     }, {
       navigationOptions: { header: null }

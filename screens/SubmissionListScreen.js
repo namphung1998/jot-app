@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { FlatList, View } from 'react-native';
-import { Header, ListItem } from 'react-native-elements';
+import { FlatList, ScrollView, View } from 'react-native';
+import { Header } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import _ from 'lodash';
@@ -11,6 +11,14 @@ import Submission from "../components/Submission";
 @withMappedNavigationProps()
 class SubmissionListScreen extends Component {
   componentWillMount() {
+    const didBlurSubscription = this.props.navigation.addListener(
+      'didBlur',
+      () => {
+        console.log('blurred');
+        this.data = null;
+      }
+    );
+
     const { fetchSubmissions, prompt, token } = this.props;
 
     fetchSubmissions({ prompt, token });
