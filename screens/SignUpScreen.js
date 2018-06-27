@@ -9,7 +9,7 @@ import BackButton from "../components/BackButton";
 class SignUpScreen extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.user) {
-      this.props.navigation.navigate('main');
+      this.props.navigation.navigate('prompt');
     }
   }
 

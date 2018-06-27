@@ -3,7 +3,8 @@ import {
   MAKE_SUBMISSION,
   MAKE_SUBMISSION_SUCCESS,
   FETCH_SUBMISSIONS,
-  SELECT_SUBMISSION
+  SELECT_SUBMISSION,
+  FETCH_USER_SUBMISSIONS
 } from "./types";
 
 const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
@@ -45,6 +46,22 @@ export function fetchSubmissions({ prompt, token }) {
       });
 
       dispatch({ type: FETCH_SUBMISSIONS, payload: data });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
+export function fetchUserSubmissions({ user, token }) {
+  return async (dispatch) => {
+    try {
+      let { data } = await axios({
+        url: `${ROOT_URL}/users/${user.id}/submissions`,
+        method: 'get',
+        headers: { Authorization: token }
+      });
+
+      dispatch({ type: FETCH_USER_SUBMISSIONS, payload: data });
     } catch (err) {
       console.log(err);
     }

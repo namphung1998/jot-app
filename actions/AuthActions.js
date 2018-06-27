@@ -7,10 +7,18 @@ import {
   EMAIL_CHANGE,
   PASSWORD_CHANGE,
   CREATE_USER,
-  CREATE_USER_SUCCESS
+  CREATE_USER_SUCCESS,
+  LOGOUT_USER,
+  INITIATE_AUTH
 } from './types';
 
 const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
+
+export function initiateAuth() {
+  return {
+    type: INITIATE_AUTH
+  };
+}
 
 export function emailChange(text) {
   return {
@@ -90,3 +98,10 @@ export function createUser({ userName, email, password, passwordConfirm }) {
 function createUserSuccess(dispatch, user, token) {
   dispatch({ type: CREATE_USER_SUCCESS, payload: { user, token } })
 }
+
+export function logoutUser() {
+  // initiateAuth();
+  return { type: LOGOUT_USER };
+}
+
+

@@ -2,14 +2,24 @@ import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
 import { Header, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
-import { emailChange, passwordChange, loginUser } from '../actions';
+import { emailChange, passwordChange, loginUser, initiateAuth } from '../actions';
 import Spinner from '../components/Spinner';
 import Input from '../components/Input';
 
 class SignInScreen extends Component {
+  componentWillMount() {
+    const didFocusSubscription = this.props.navigation.addListener(
+      'didFocus',
+      () => {
+        console.log('back to auth');
+        this.props.initiateAuth();
+      }
+    );
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.user) {
-      this.props.navigation.navigate('main');
+      this.props.navigation.navigate('prompt');
     }
   }
 
@@ -123,4 +133,4 @@ function mapStateToProps(state) {
   return { email, password, loading, error, user };
 }
 
-export default connect(mapStateToProps, { emailChange, passwordChange, loginUser })(SignInScreen);
+export default connect(mapStateToProps, { emailChange, passwordChange, loginUser, initiateAuth })(SignInScreen);

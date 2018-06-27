@@ -1,8 +1,10 @@
+export const INITIATE_AUTH = 'initiate_auth';
 export const EMAIL_CHANGE = 'email_change';
 export const PASSWORD_CHANGE = 'password_change';
 export const LOGIN_USER = 'login_user';
 export const LOGIN_USER_SUCCESS = 'login_user_success';
 export const LOGIN_USER_FAIL = 'login_user_fail';
+export const LOGOUT_USER = 'logout_user';
 export const FETCH_PROMPTS = 'fetch_prompt';
 export const CREATE_USER = 'create_user';
 export const CREATE_USER_SUCCESS = 'create_user_success';
@@ -12,3 +14,4 @@ export const FETCH_SUBMISSIONS = 'fetch_submissions';
 export const SUBMIT_REVIEW = 'submit_review';
 export const SUBMIT_REVIEW_SUCCESS = 'submit_review_success';
 export const SELECT_SUBMISSION = 'select_submission';
+export const FETCH_USER_SUBMISSIONS = 'fetch_user_submissions';

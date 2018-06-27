@@ -9,6 +9,7 @@ import PromptDetailScreen from "./screens/PromptDetailScreen";
 import SubmissionListScreen from "./screens/SubmissionListScreen";
 import SubmissionScreen from "./screens/SubmissionScreen";
 import ReviewScreen from "./screens/ReviewScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 export default class App extends React.Component {
   render() {
@@ -37,9 +38,12 @@ export default class App extends React.Component {
 
     const MainNavigator = createBottomTabNavigator({
       auth: { screen: AuthNavigator },
-      main: { screen: PromptNavigator }
+      main: { screen: createBottomTabNavigator({
+          prompt: { screen: PromptNavigator },
+          profile: { screen: ProfileScreen }
+        }) }
     }, {
-      navigationOptions: { tabBarVisible: false }
+      navigationOptions: { tabBarVisible: false, lazy: true }
     });
 
     return (
