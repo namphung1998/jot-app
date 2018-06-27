@@ -4,7 +4,7 @@ import { Header } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import _ from 'lodash';
-import { fetchSubmissions,selectSubmission } from "../actions";
+import { fetchSubmissions,selectSubmission, clearReview } from "../actions";
 import BackButton from "../components/BackButton";
 import Submission from "../components/Submission";
 
@@ -16,6 +16,7 @@ class SubmissionListScreen extends Component {
       () => {
         console.log('blurred');
         this.data = null;
+        this.props.clearReview();
       }
     );
 
@@ -26,6 +27,9 @@ class SubmissionListScreen extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.submitted) {
+      this.props.navigation.navigate('promptList');
+    }
     this.data = nextProps.submissions;
   }
 
@@ -36,7 +40,7 @@ class SubmissionListScreen extends Component {
   renderItem = ({ item }) => {
     // return <ListItem onPress={() => {}} title={item.user.name}/>
 
-    return <Submission onPress={() => { this.props.selectSubmission(item.id) }} submission={item} />
+    return <Submission prompt={this.props.prompt} onPress={() => { this.props.selectSubmission(item.id) }} submission={item} />
   };
 
   render() {
@@ -66,7 +70,8 @@ function mapStateToProps(state) {
   return {
     submissions,
     token: state.auth.token,
+    submitted: state.review.submitted
   };
 }
 
-export default connect(mapStateToProps, { fetchSubmissions, selectSubmission })(SubmissionListScreen);
+export default connect(mapStateToProps, { fetchSubmissions, selectSubmission, clearReview })(SubmissionListScreen);

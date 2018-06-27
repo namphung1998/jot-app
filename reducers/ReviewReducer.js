@@ -1,6 +1,7 @@
 import {
   SUBMIT_REVIEW,
-  SUBMIT_REVIEW_SUCCESS
+  SUBMIT_REVIEW_SUCCESS,
+  CLEAR_REVIEW
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -14,6 +15,8 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, loading: true };
     case SUBMIT_REVIEW_SUCCESS:
       return { loading: false, submitted: true };
+    case CLEAR_REVIEW:
+      return INITIAL_STATE;
     default:
       return state;
   }

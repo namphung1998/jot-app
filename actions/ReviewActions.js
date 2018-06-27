@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
   SUBMIT_REVIEW,
-  SUBMIT_REVIEW_SUCCESS
+  SUBMIT_REVIEW_SUCCESS,
+  CLEAR_REVIEW
 } from "./types";
 
 const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
@@ -30,4 +31,8 @@ export function submitReview({ prompt, submission, user, token, body }) {
 
 function submitReviewSuccess(dispatch) {
   dispatch({ type: SUBMIT_REVIEW_SUCCESS });
+}
+
+export function clearReview() {
+  return { type: CLEAR_REVIEW };
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 
+@withMappedNavigationProps()
 class ReviewScreen extends Component {
   render() {
     return (
