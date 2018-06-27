@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, ScrollView, View } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { Header } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
@@ -15,8 +15,17 @@ class SubmissionListScreen extends Component {
       'didBlur',
       () => {
         console.log('blurred');
-        this.data = null;
         this.props.clearReview();
+      }
+    );
+
+    const willFocusSubscription = this.props.navigation.addListener(
+      'willFocus',
+      () => {
+        const { fetchSubmissions, prompt, token } = this.props;
+
+        fetchSubmissions({ prompt, token });
+        this.data = this.props.submissions;
       }
     );
 
@@ -38,8 +47,6 @@ class SubmissionListScreen extends Component {
   }
 
   renderItem = ({ item }) => {
-    // return <ListItem onPress={() => {}} title={item.user.name}/>
-
     return <Submission prompt={this.props.prompt} onPress={() => { this.props.selectSubmission(item.id) }} submission={item} />
   };
 

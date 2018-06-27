@@ -63,9 +63,11 @@ class Submission extends Component {
 
 
   render() {
+    const author = this.props.submission.user.id === this.props.user.id ? `${this.props.user.name} (me)` : this.props.submission.user.name;
+
     return (
       <View>
-        <ListItem rightIcon={<Icon/>} onPress={this.props.onPress} title={this.props.submission.user.name}/>
+        <ListItem rightIcon={<Icon/>} onPress={this.props.onPress} title={author}/>
         {this.renderExpandedText()}
       </View>
     );
