@@ -9,7 +9,8 @@ import {
   CREATE_USER,
   CREATE_USER_SUCCESS,
   LOGOUT_USER,
-  INITIATE_AUTH
+  LOGOUT_USER_SUCCESS,
+  INITIATE_AUTH,
 } from './types';
 
 const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
@@ -100,8 +101,17 @@ function createUserSuccess(dispatch, user, token) {
 }
 
 export function logoutUser() {
-  // initiateAuth();
-  return { type: LOGOUT_USER };
+  return async (dispatch) => {
+    dispatch({ type: LOGOUT_USER });
+
+    await AsyncStorage.removeItem('token');
+
+    logoutUserSuccess(dispatch);
+  }
+}
+
+function logoutUserSuccess(dispatch) {
+  dispatch({ type: LOGOUT_USER_SUCCESS });
 }
 
 

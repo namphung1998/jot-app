@@ -34,7 +34,7 @@ class PromptListScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Header
           backgroundColor='#7dc99f'
           centerComponent={{ text: 'Prompts', style: { color: '#fff', fontSize: 36 } }}

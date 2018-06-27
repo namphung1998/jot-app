@@ -7,6 +7,7 @@ import {
   CREATE_USER,
   CREATE_USER_SUCCESS,
   LOGOUT_USER,
+  LOGOUT_USER_SUCCESS,
   INITIATE_AUTH
 } from '../actions/types';
 
@@ -41,7 +42,9 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, ...INITIAL_STATE, user: action.payload.user, token: action.payload.token };
     case LOGOUT_USER:
       console.log(state);
-      return { ...state, loggedIn: false };
+      return { ...state, loading: true, error: '' };
+    case LOGOUT_USER_SUCCESS:
+      return { ...INITIAL_STATE, loggedIn: false };
     default:
       return state;
   }
