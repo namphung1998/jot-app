@@ -33,8 +33,8 @@ class ProfileScreen extends Component {
   renderItem = ({ item }) => {
     return (
       <ListItem
-        onPress={() => { this.props.navigation.navigate('receivedReview'), { submission: item }}}
         title={item.preface}
+        onPress={() => { this.props.navigation.navigate('receivedReview', { submission: item }) }}
       />
     );
   }

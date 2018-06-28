@@ -2,7 +2,6 @@ import {
   SUBMIT_REVIEW,
   SUBMIT_REVIEW_SUCCESS,
   CLEAR_REVIEW,
-  FETCH_USER_REVIEWS
 } from "../actions/types";
 
 const INITIAL_STATE = {
@@ -18,8 +17,6 @@ export default (state=INITIAL_STATE, action) => {
       return { loading: false, submitted: true };
     case CLEAR_REVIEW:
       return INITIAL_STATE;
-    case FETCH_USER_REVIEWS:
-      return { ...state, ...INITIAL_STATE, userReviewList: action.payload };
     default:
       return state;
   }
