@@ -47,11 +47,11 @@ export default class App extends React.Component {
     const MainNavigator = createBottomTabNavigator({
       auth: { screen: AuthNavigator },
       main: { screen: createBottomTabNavigator({
-          prompt: { screen: PromptNavigator },
-          profileNav: { screen: ProfileNavigator }
-        }) }
+          Prompts: { screen: PromptNavigator },
+          Profile: { screen: ProfileNavigator }
+        })}
     }, {
-      navigationOptions: { tabBarVisible: false, lazy: true }
+      navigationOptions: { tabBarVisible: false, lazy: true },
     });
 
     return (

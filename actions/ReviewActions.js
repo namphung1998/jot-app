@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
   SUBMIT_REVIEW,
   SUBMIT_REVIEW_SUCCESS,
-  CLEAR_REVIEW
+  CLEAR_REVIEW,
+  FETCH_USER_REVIEWS
 } from "./types";
 
 const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
@@ -35,4 +36,20 @@ function submitReviewSuccess(dispatch) {
 
 export function clearReview() {
   return { type: CLEAR_REVIEW };
+}
+
+export function fetchUserReviews({ user, token }) {
+  return async (dispatch) => {
+    try {
+      let { data } = await axios({
+        url: `${ROOT_URL}/users/${user.id}/reviews`,
+        method: 'get',
+        headers: { Authorization: token }
+      });
+
+      dispatch({ type: FETCH_USER_REVIEWS, payload: data });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }

@@ -6,6 +6,10 @@ import _ from 'lodash'
 import { fetchPrompts } from "../actions";
 
 class PromptListScreen extends Component {
+  static navigationOptions = {
+    title: 'Prompts'
+  };
+
   componentWillMount() {
     const willFocusSubscription = this.props.navigation.addListener(
       'willFocus',

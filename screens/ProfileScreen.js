@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, FlatList, Dimensions } from 'react-native';
-import { Header, Card, ListItem, Button } from 'react-native-elements';
+import { Header, Card, ListItem, Button, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchUserSubmissions, logoutUser } from '../actions';
@@ -9,7 +9,8 @@ import Spinner from "../components/Spinner";
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class ProfileScreen extends Component {
-  componentWillMount() {
+
+    componentWillMount() {
     const willFocusSubscription = this.props.navigation.addListener(
       'willFocus',
       () => {

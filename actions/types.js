@@ -14,6 +14,7 @@ export const MAKE_SUBMISSION_SUCCESS = 'make_submission_success';
 export const FETCH_SUBMISSIONS = 'fetch_submissions';
 export const SUBMIT_REVIEW = 'submit_review';
 export const SUBMIT_REVIEW_SUCCESS = 'submit_review_success';
+export const FETCH_USER_REVIEWS = 'fetch_user_reviews';
 export const SELECT_SUBMISSION = 'select_submission';
 export const FETCH_USER_SUBMISSIONS = 'fetch_user_submissions';
 export const CLEAR_REVIEW = 'clear_review';

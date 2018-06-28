@@ -6,6 +6,8 @@ import BackButton from "../components/BackButton";
 
 @withMappedNavigationProps()
 class ReceivedReviewScreen extends Component {
+
+
   onBackPress = () => {
     this.props.navigation.goBack();
   }
