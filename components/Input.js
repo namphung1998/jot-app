@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
 import { FormInput } from 'react-native-elements';
 
-class Input extends Component {
-  render() {
-    const { secureTextEntry, placeholder, label, value, onChangeText } = this.props;
+const Input = (props) => {
+  const { secureTextEntry, placeholder, label, value, onChangeText } = props;
 
-    return (
-      <View>
-        <Text style={styles.labelStyle}>{label}</Text>
-        <FormInput
-          placeholder={placeholder}
-          secureTextEntry={secureTextEntry}
-          value={value}
-          onChangeText={onChangeText}
-        />
-      </View>
-    );
-  }
-}
+  return (
+    <View>
+      <Text style={styles.labelStyle}>{label}</Text>
+      <FormInput
+        placeholder={placeholder}
+        secureTextEntry={secureTextEntry}
+        value={value}
+        onChangeText={onChangeText}
+      />
+    </View>
+  );
+};
 
 const styles = {
   labelStyle: {

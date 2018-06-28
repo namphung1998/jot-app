@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  Platform,
   LayoutAnimation
 } from 'react-native';
 import { ListItem, Icon, Card, Button } from 'react-native-elements';
