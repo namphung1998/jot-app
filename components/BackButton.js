@@ -12,7 +12,7 @@ const BackButton = (props) => {
       <Text style={{ color: 'white' }}>{props.text}</Text>
     </TouchableOpacity>
   ) : (
-    <TouchableNativeFeedback>
+    <TouchableNativeFeedback onPress={props.onPress}>
       <Text style={{ color: 'white' }}>{props.text}</Text>
     </TouchableNativeFeedback>
   );
