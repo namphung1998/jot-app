@@ -32,6 +32,7 @@ class PromptListScreen extends Component {
       <ListItem
         title={item.title}
         onPress={() => { this.props.navigation.navigate('promptDetail', { prompt: item }) }}
+        bottomDivider
       />
     );
   }

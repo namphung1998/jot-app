@@ -80,6 +80,7 @@ class SignInScreen extends Component {
         <Header
           innerContainerStyle={{ height: Platform.OS === 'android' ? 24 : null }}
           backgroundColor='#7dc99f'
+          centerComponent={{ text: 'Jot', style: { color: '#fff', fontSize: 36 }}}
         />
         <View>
           <Input

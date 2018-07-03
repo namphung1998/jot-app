@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { createUser } from '../actions';
 import Input from '../components/Input';
 import BackButton from "../components/BackButton";
+import Spinner from "../components/Spinner";
 
 class SignUpScreen extends Component {
   componentWillReceiveProps(nextProps) {
@@ -50,6 +51,21 @@ class SignUpScreen extends Component {
     this.props.createUser({ userName, email, password, passwordConfirm });
   }
 
+
+  renderButton() {
+    if (this.props.loading) {
+      return <Spinner/>
+    }
+
+    return (
+      <Button
+        containerViewStyle={{ paddingTop: 16 }}
+        title='Sign up'
+        onPress={this.onButtonPress}
+      />
+    );
+  }
+
   render() {
     return (
       <View>
@@ -79,20 +95,16 @@ class SignUpScreen extends Component {
           onChangeText={this.onPasswordConfirmChange}
           secureTextEntry
         />
-        <Button
-          containerViewStyle={{ paddingTop: 16 }}
-          title='Sign up'
-          onPress={this.onButtonPress}
-        />
+        {this.renderButton()}
       </View>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { email, password, user, token } = state.auth;
+  const { email, password, user, token, loading } = state.auth;
 
-  return { email, password, user, token };
+  return { email, password, user, token, loading };
 }
 
 export default connect(mapStateToProps, { createUser })(SignUpScreen);

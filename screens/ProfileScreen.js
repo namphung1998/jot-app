@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, FlatList, Dimensions } from 'react-native';
-import { Header, Card, ListItem, Button, Icon } from 'react-native-elements';
+import { Header, Card, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchUserSubmissions, logoutUser } from '../actions';
