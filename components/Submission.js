@@ -7,7 +7,8 @@ import {
 import { ListItem, Icon, Card, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { submitReview } from "../actions";
-import Input from "./Input";
+import NewInput from "./NewInput";
+import Input from './Input';
 
 class Submission extends Component {
   constructor(props) {
@@ -39,8 +40,8 @@ class Submission extends Component {
           <View style={styles.submissionContainerStyle}>
             <Text>{this.props.submission.body}</Text>
           </View>
-          <Card>
-            <Input
+          <View>
+            <NewInput
               label='What do you think?'
               value={this.state.reviewBody}
               onChangeText={(reviewBody) => this.setState({ reviewBody })}
@@ -50,7 +51,7 @@ class Submission extends Component {
               title='Submit Review'
               onPress={this.onReviewPress}
             />
-          </Card>
+          </View>
         </Card>
       );
     }

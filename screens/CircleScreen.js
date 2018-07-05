@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { Header } from 'react-native-elements';
 
 class CircleScreen extends Component {
