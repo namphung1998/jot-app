@@ -9,17 +9,15 @@ import Spinner from "../components/Spinner";
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 class ProfileScreen extends Component {
-
-    componentWillMount() {
+  componentDidMount() {
     const willFocusSubscription = this.props.navigation.addListener(
       'willFocus',
       () => {
-        const { fetchUserSubmissions, user, token } = this.props;
-
-        fetchUserSubmissions({ user, token });
+        const { fetchUserSubmissions, user } = this.props;
+        fetchUserSubmissions(user);
         this.data = this.props.userSubmittedList;
       }
-    );
+    )
   }
 
   componentWillReceiveProps(nextProps) {

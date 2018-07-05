@@ -10,17 +10,14 @@ class PromptListScreen extends Component {
     title: 'Prompts'
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const willFocusSubscription = this.props.navigation.addListener(
       'willFocus',
       () => {
-        console.log('focused');
-        this.props.fetchPrompts(this.props.token);
+        this.props.fetchPrompts();
+        this.data = this.props.prompts;
       }
     );
-
-    this.props.fetchPrompts(this.props.token);
-    this.data = this.props.prompts;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,12 +52,8 @@ class PromptListScreen extends Component {
 }
 
 function mapStateToProps(state) {
-  const prompts = _.map(state.prompts, (val) => {
-    return { ...val };
-  });
-
   return {
-    prompts,
+    prompts: state.prompts,
     token: state.auth.token
   };
 }

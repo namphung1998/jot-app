@@ -8,8 +8,8 @@ import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 
 class SignUpScreen extends Component {
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user) {
+  componentDidUpdate() {
+    if (this.props.user) {
       this.props.navigation.navigate('Prompts');
     }
   }

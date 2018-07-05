@@ -8,13 +8,22 @@ import Input from '../components/Input';
 
 class SignInScreen extends Component {
   componentWillMount() {
+    this.props.initiateAuth();
+  }
+
+  componentDidMount() {
     const didFocusSubscription = this.props.navigation.addListener(
       'didFocus',
       () => {
-        console.log('back to auth');
         this.props.initiateAuth();
       }
     );
+  }
+
+  componentDidUpdate() {
+    if (this.props.user) {
+      this.props.navigation.navigate('Prompts');
+    }
   }
 
   componentWillReceiveProps(nextProps) {

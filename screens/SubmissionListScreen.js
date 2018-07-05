@@ -10,11 +10,10 @@ import Submission from "../components/Submission";
 
 @withMappedNavigationProps()
 class SubmissionListScreen extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const didBlurSubscription = this.props.navigation.addListener(
       'didBlur',
       () => {
-        console.log('blurred');
         this.props.clearReview();
       }
     );
@@ -23,16 +22,11 @@ class SubmissionListScreen extends Component {
       'willFocus',
       () => {
         const { fetchSubmissions, prompt, token } = this.props;
-
-        fetchSubmissions({ prompt, token });
+        // fetchSubmissions({ prompt, token });
+        fetchSubmissions(prompt);
         this.data = this.props.submissions;
       }
-    );
-
-    const { fetchSubmissions, prompt, token } = this.props;
-
-    fetchSubmissions({ prompt, token });
-    this.data = this.props.submissions;
+    )
   }
 
   componentWillReceiveProps(nextProps) {

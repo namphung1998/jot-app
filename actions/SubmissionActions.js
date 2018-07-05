@@ -13,8 +13,10 @@ function makeSubmissionSuccess(dispatch) {
   dispatch({ type: MAKE_SUBMISSION_SUCCESS })
 }
 
-export function makeSubmission({ preface, body, token, user, prompt }) {
-  return async (dispatch) => {
+export function makeSubmission({ preface, body, prompt }) {
+  return async (dispatch, getState) => {
+    const { user, token } = getState().auth;
+
     try {
       dispatch({ type: MAKE_SUBMISSION });
 
@@ -36,8 +38,26 @@ export function makeSubmission({ preface, body, token, user, prompt }) {
   }
 }
 
-export function fetchSubmissions({ prompt, token }) {
-  return async (dispatch) => {
+// export function fetchSubmissions({ prompt, token }) {
+//   return async (dispatch) => {
+//     try {
+//       let { data } = await axios({
+//         url: `${ROOT_URL}/prompts/${prompt.id}/submissions`,
+//         method: 'get',
+//         headers: { Authorization: token }
+//       });
+//
+//       dispatch({ type: FETCH_SUBMISSIONS, payload: data });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+// }
+
+export function fetchSubmissions(prompt) {
+  return async (dispatch, getState) => {
+    const { token } = getState().auth;
+
     try {
       let { data } = await axios({
         url: `${ROOT_URL}/prompts/${prompt.id}/submissions`,
@@ -51,9 +71,27 @@ export function fetchSubmissions({ prompt, token }) {
     }
   }
 }
+//
+// export function fetchUserSubmissions({ user, token }) {
+//   return async (dispatch) => {
+//     try {
+//       let { data } = await axios({
+//         url: `${ROOT_URL}/users/${user.id}/submissions`,
+//         method: 'get',
+//         headers: { Authorization: token }
+//       });
+//
+//       dispatch({ type: FETCH_USER_SUBMISSIONS, payload: data });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+// }
 
-export function fetchUserSubmissions({ user, token }) {
-  return async (dispatch) => {
+export function fetchUserSubmissions(user) {
+  return async (dispatch, getState) => {
+    const { token } = getState().auth;
+
     try {
       let { data } = await axios({
         url: `${ROOT_URL}/users/${user.id}/submissions`,

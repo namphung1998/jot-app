@@ -50,7 +50,6 @@ export function loginUser({ email, password }) {
   return async (dispatch) => {
     dispatch({ type: LOGIN_USER });
 
-
     try {
       let { data } = await axios({
         url: `${ROOT_URL}/login`,
@@ -113,5 +112,3 @@ export function logoutUser() {
 function logoutUserSuccess(dispatch) {
   dispatch({ type: LOGOUT_USER_SUCCESS });
 }
-
-

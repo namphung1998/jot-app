@@ -6,16 +6,24 @@ import {
   Text
 } from 'react-native';
 
-const BackButton = (props) => {
-  return Platform.OS === 'ios' ? (
-    <TouchableOpacity onPress={props.onPress}>
-      <Text style={{ color: 'white' }}>{props.text}</Text>
-    </TouchableOpacity>
-  ) : (
-    <TouchableNativeFeedback onPress={props.onPress}>
-      <Text style={{ color: 'white' }}>{props.text}</Text>
-    </TouchableNativeFeedback>
-  );
+const BackButton = ({ text, onPress }) => {
+  if (Platform.OS === 'ios') {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <Text style={{ color: 'white' }}>
+          {text}
+        </Text>
+      </TouchableOpacity>
+    );
+
+    return (
+      <TouchableNativeFeedback onPress={onPress}>
+        <Text style={{ color: 'white' }}>
+          {text}
+        </Text>
+      </TouchableNativeFeedback>
+    );
+  }
 };
 
 export default BackButton;

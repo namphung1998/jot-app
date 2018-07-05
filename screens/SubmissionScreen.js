@@ -33,7 +33,7 @@ class SubmissionScreen extends Component {
     const { token, user, prompt, makeSubmission } = this.props;
     const { preface, body } = this.state;
 
-    makeSubmission({ preface, body, token, user, prompt });
+    makeSubmission({ preface, body, prompt });
   }
 
   renderButton() {

@@ -23,11 +23,9 @@ class Submission extends Component {
   }
 
   onReviewPress = () => {
-    const { submitReview, user, token, prompt, submission } = this.props;
+    const { submitReview, prompt, submission } = this.props;
 
     submitReview({
-      user,
-      token,
       prompt,
       submission,
       body: this.state.reviewBody
@@ -60,7 +58,13 @@ class Submission extends Component {
 
 
   render() {
-    const author = this.props.submission.user.id === this.props.user.id ? `${this.props.user.name} (me)` : this.props.submission.user.name;
+    let author;
+
+    if (this.props.submission.user.id === this.props.user.id) {
+      author = `${this.props.user.name} (me)`;
+    } else {
+      author = this.props.submission.user.name;
+    }
 
     return (
       <View>
