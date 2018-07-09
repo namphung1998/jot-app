@@ -3,10 +3,31 @@ import { View, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import Swiper from 'react-native-swiper';
 
+const SLIDE_DATA = [
+  { text: 'Welcome to Jot!', color: '#03a9f4' },
+  { text: 'This will help you become a better writer', color: '#009688' },
+  { text: 'Sign in and start writing!', color: '#03a9f4' }
+];
+
 class WelcomeScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { last: false };
+  }
+
   render() {
     return (
-      <Swiper style={styles.wrapper} showsButtons>
+      <Swiper style={styles.wrapper}
+        showsButtons={!this.state.last}
+        onIndexChanged={index => {
+          if (index === 2) {
+            this.setState({ last: true });
+          } else {
+            this.setState({ last: false });
+          }
+        }}
+      >
         <View style={styles.slide1}>
           <Text style={styles.text}>Welcome to Jot!</Text>
         </View>

@@ -14,9 +14,7 @@ class Submission extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      reviewBody: ''
-    };
+    this.state = { reviewBody: '' };
   }
 
   componentWillUpdate() {
