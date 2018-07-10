@@ -21,7 +21,7 @@ class Submission extends Component {
     LayoutAnimation.spring();
   }
 
-  onReviewPress = () => {
+  onButtonPress = () => {
     const { submitReview, prompt, submission } = this.props;
 
     submitReview({
@@ -47,7 +47,7 @@ class Submission extends Component {
             <Button
               containerViewStyle={{ paddingTop: 16 }}
               title='Submit Review'
-              onPress={this.onReviewPress}
+              onPress={this.onButtonPress}
             />
           </View>
         </Card>

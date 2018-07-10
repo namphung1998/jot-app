@@ -51,6 +51,9 @@ class SignUpScreen extends Component {
     this.props.createUser({ userName, email, password, passwordConfirm });
   }
 
+  clear = (ref) => {
+    ref.clear();
+  }
 
   renderButton() {
     if (this.props.loading) {
@@ -77,23 +80,27 @@ class SignUpScreen extends Component {
           label='Username'
           value={this.state.userName}
           onChangeText={this.onUserNameChange}
+          ref={(ref) => this.nameInputRef = ref}
         />
         <Input
           label='Email'
           value={this.state.email}
           onChangeText={this.onEmailChange}
+          ref={(ref) => this.emailInputRef = ref}
         />
         <Input
           label='Password'
           value={this.state.password}
           onChangeText={this.onPasswordChange}
           secureTextEntry
+          ref={(ref) => this.passwordInputRef = ref}
         />
         <Input
           label='Password Confirmation'
           value={this.state.passwordConfirm}
           onChangeText={this.onPasswordConfirmChange}
           secureTextEntry
+          ref={(ref) => this.passwordConfirmInputRef = ref}
         />
         {this.renderButton()}
       </View>

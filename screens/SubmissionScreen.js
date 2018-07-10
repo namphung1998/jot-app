@@ -31,7 +31,7 @@ class SubmissionScreen extends Component {
   }
 
   onButtonPress = () => {
-    const { token, user, prompt, makeSubmission } = this.props;
+    const { prompt, makeSubmission } = this.props;
     const { preface, body } = this.state;
 
     makeSubmission({ preface, body, prompt });
@@ -80,10 +80,9 @@ class SubmissionScreen extends Component {
 }
 
 function mapStateToProps(state) {
-  const { token, user } = state.auth;
   const { submitted, loading } = state.submission;
 
-  return { token, user, submitted, loading };
+  return { submitted, loading };
 }
 
 export default connect(mapStateToProps, { makeSubmission })(SubmissionScreen);

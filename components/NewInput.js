@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { View, Text } from 'react-native';
 import { FormInput } from 'react-native-elements';
-
-const SCREEN_WIDTH = Dimensions.get('window').width;
 
 class NewInput extends Component {
   constructor(props) {

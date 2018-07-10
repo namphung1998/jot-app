@@ -2,48 +2,25 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import Swiper from 'react-native-swiper';
+import Slides from '../components/Slides';
 
 const SLIDE_DATA = [
-  { text: 'Welcome to Jot!', color: '#03a9f4' },
-  { text: 'This will help you become a better writer', color: '#009688' },
-  { text: 'Sign in and start writing!', color: '#03a9f4' }
+  { text: 'Welcome to Jot!', color: '#9DD6EB' },
+  { text: 'This will help you become a better writer', color: '#97CAE5' },
+  { text: 'Sign in and start writing!', color: '#92BBD9' }
 ];
 
 class WelcomeScreen extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { last: false };
+  onComplete = () => {
+    this.props.navigation.navigate('auth');
   }
 
   render() {
     return (
-      <Swiper style={styles.wrapper}
-        showsButtons={!this.state.last}
-        onIndexChanged={index => {
-          if (index === 2) {
-            this.setState({ last: true });
-          } else {
-            this.setState({ last: false });
-          }
-        }}
-      >
-        <View style={styles.slide1}>
-          <Text style={styles.text}>Welcome to Jot!</Text>
-        </View>
-        <View style={styles.slide2}>
-          <Text style={styles.text}>This Will Make You a Better Writer.</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>Sign in and Start Writing!</Text>
-          <Button
-            title="Let's begin!"
-            buttonStyle={styles.buttonStyle}
-            raised
-            onPress={() => this.props.navigation.navigate('auth')}
-          />
-        </View>
-      </Swiper>
+      <Slides
+        data={SLIDE_DATA}
+        onComplete={this.onComplete}
+      />
     );
   }
 }
