@@ -11,7 +11,7 @@ import SubmissionScreen from "./screens/SubmissionScreen";
 import ReviewScreen from "./screens/ReviewScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import ReceivedReviewScreen from './screens/ReceivedReviewScreen'
-import CircleScreen from "./screens/CircleScreen";
+import CircleListScreen from "./screens/CircleListScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
 
 export default class App extends React.Component {
@@ -52,7 +52,7 @@ export default class App extends React.Component {
       main: { screen: createBottomTabNavigator({
           Prompts: { screen: PromptNavigator },
           Profile: { screen: ProfileNavigator },
-          Circle: { screen: CircleScreen }
+          Circle: { screen: CircleListScreen }
         })}
     }, {
       navigationOptions: { tabBarVisible: false, lazy: true },

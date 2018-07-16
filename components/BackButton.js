@@ -15,15 +15,15 @@ const BackButton = ({ text, onPress }) => {
         </Text>
       </TouchableOpacity>
     );
-
-    return (
-      <TouchableNativeFeedback onPress={onPress}>
-        <Text style={{ color: 'white' }}>
-          {text}
-        </Text>
-      </TouchableNativeFeedback>
-    );
   }
+
+  return (
+    <TouchableNativeFeedback onPress={onPress}>
+      <Text style={{ color: 'white' }}>
+        {text}
+      </Text>
+    </TouchableNativeFeedback>
+  );
 };
 
 export default BackButton;

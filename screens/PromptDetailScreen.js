@@ -51,9 +51,9 @@ class PromptDetailScreen extends Component {
 const styles = {
   buttonContainerStyle: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    paddingTop: 16
+    marginTop: 16,
+    // backgroundColor: 'blue',
+    justifyContent: 'center'
   },
 }
 

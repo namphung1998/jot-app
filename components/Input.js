@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { FormInput } from 'react-native-elements';
+import { FormInput, FormLabel } from 'react-native-elements';
 
 const Input = (props) => {
   const { secureTextEntry, placeholder, label, value, onChangeText } = props;
 
   return (
     <View>
-      <Text style={styles.labelStyle}>{label}</Text>
+      <FormLabel>{label}</FormLabel>
       <FormInput
         placeholder={placeholder}
         secureTextEntry={secureTextEntry}

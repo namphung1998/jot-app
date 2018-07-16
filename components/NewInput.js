@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { FormInput } from 'react-native-elements';
+import { FormInput, FormLabel } from 'react-native-elements';
 
 class NewInput extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class NewInput extends Component {
 
     return (
       <View>
-        <Text style={styles.labelStyle}>{label}</Text>
+        <FormLabel style={styles.labelStyle}>{label}</FormLabel>
         <FormInput
           multiline={multiline}
           autoCorrect={autoCorrect || false}

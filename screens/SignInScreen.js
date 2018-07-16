@@ -73,11 +73,13 @@ class SignInScreen extends Component {
           buttonStyle={styles.buttonStyle}
           title='Sign in'
           onPress={this.onSignInPress}
+          containerViewStyle={{ flex: 1 }}
         />
         <Button
           buttonStyle={styles.buttonStyle}
           title='Sign up'
           onPress={this.onSignUpPress}
+          containerViewStyle={{ flex: 1 }}
         />
       </View>
     );
@@ -117,17 +119,15 @@ class SignInScreen extends Component {
 }
 
 const styles = {
+  buttonStyle: {
+
+  },
   buttonContainerStyle: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    paddingTop: 16
+    // backgroundColor: 'blue',
+    marginTop: 16,
+    justifyContent: 'space-evenly'
   },
-
-  buttonStyle: {
-    alignSelf: 'stretch'
-  },
-
   errorTextStyle: {
     fontSize: 20,
     alignSelf: 'center',
