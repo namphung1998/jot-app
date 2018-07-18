@@ -7,27 +7,6 @@ import {
 
 const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
 
-// export function submitReview({ prompt, submission, user, token, body }) {
-//   return async (dispatch) => {
-//     try {
-//       dispatch({ type: SUBMIT_REVIEW });
-//
-//       await axios({
-//         url: `${ROOT_URL}/prompts/${prompt.id}/submissions/${submission.id}/reviews`,
-//         method: 'post',
-//         data: {
-//           user_id: user.id,
-//           body
-//         },
-//         headers: { Authorization: token }
-//       });
-//
-//       submitReviewSuccess(dispatch);
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-// }
 
 export function submitReview({ prompt, submission, body }) {
   return async (dispatch, getState) => {

@@ -13,7 +13,7 @@ import {
   INITIATE_AUTH,
 } from './types';
 
-const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
+const ROOT_URL = require('../constants');
 
 export function initiateAuth() {
   return {

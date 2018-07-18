@@ -38,22 +38,6 @@ export function makeSubmission({ preface, body, prompt }) {
   }
 }
 
-// export function fetchSubmissions({ prompt, token }) {
-//   return async (dispatch) => {
-//     try {
-//       let { data } = await axios({
-//         url: `${ROOT_URL}/prompts/${prompt.id}/submissions`,
-//         method: 'get',
-//         headers: { Authorization: token }
-//       });
-//
-//       dispatch({ type: FETCH_SUBMISSIONS, payload: data });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-// }
-
 export function fetchSubmissions(prompt) {
   return async (dispatch, getState) => {
     const { token } = getState().auth;
@@ -71,22 +55,6 @@ export function fetchSubmissions(prompt) {
     }
   }
 }
-//
-// export function fetchUserSubmissions({ user, token }) {
-//   return async (dispatch) => {
-//     try {
-//       let { data } = await axios({
-//         url: `${ROOT_URL}/users/${user.id}/submissions`,
-//         method: 'get',
-//         headers: { Authorization: token }
-//       });
-//
-//       dispatch({ type: FETCH_USER_SUBMISSIONS, payload: data });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-// }
 
 export function fetchUserSubmissions(user) {
   return async (dispatch, getState) => {

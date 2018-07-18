@@ -5,7 +5,7 @@ import {
   CREATE_CIRCLE_SUCCESS
 } from './types';
 
-const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
+const ROOT_URL = require('../constants');
 
 export function fetchCircles() {
   return async (dispatch, getState) => {
@@ -18,27 +18,7 @@ export function fetchCircles() {
         headers: { Authorization: token }
       });
 
-      console.log(data);
-
-      let payload = [];
-
-      for (let i = 0; i < data.length; i++) {
-        const circle = data[i];
-        console.log(circle);
-        axios({
-          url: `${ROOT_URL}/circles/${circle.circle_id}`,
-          method: 'get',
-          headers: { Authorization: token }
-        })
-          .then(({ data }) => {
-            console.log(data);
-            payload.push(data.name);
-          })
-      }
-
-      console.log(payload);
-
-
+      dispatch({ type: FETCH_CIRCLES, payload: data });
     } catch (err) {
       console.log(err);
     }
