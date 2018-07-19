@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Header, Button, Card } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import BackButton from "../components/BackButton";
+import MyHeader from '../components/MyHeader';
 
 @withMappedNavigationProps()
 class PromptDetailScreen extends Component {
@@ -21,7 +22,7 @@ class PromptDetailScreen extends Component {
   render() {
     return (
       <View>
-        <Header
+        <MyHeader
           backgroundColor='#7dc99f'
           leftComponent={<BackButton text='Back to Prompts' onPress={this.onBackPress}/>}
         />

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
-import { Header, Button } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { emailChange, passwordChange, loginUser, initiateAuth } from '../actions';
 import Spinner from '../components/Spinner';
 import Input from '../components/Input';
+import MyHeader from '../components/MyHeader';
 
 class SignInScreen extends Component {
   componentWillMount() {
@@ -88,10 +89,10 @@ class SignInScreen extends Component {
   render() {
     return (
       <View>
-        <Header
+        <MyHeader
           innerContainerStyle={{ height: Platform.OS === 'android' ? 24 : null }}
           backgroundColor='#7dc99f'
-          centerComponent={{ text: 'Jot', style: { color: '#fff', fontSize: 36 }}}
+          text='Jot'
         />
         <View>
           <Input

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
-import { ListItem, Header } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _ from 'lodash'
 import { fetchPrompts } from "../actions";
+import MyHeader from '../components/MyHeader';
 
 class PromptListScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -39,9 +40,9 @@ class PromptListScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Header
+        <MyHeader
           backgroundColor='#7dc99f'
-          centerComponent={{ text: 'Prompts', style: { color: '#fff', fontSize: 36 } }}
+          text='Prompts'
         />
         <FlatList
           data={this.data}

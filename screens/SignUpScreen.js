@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Header, Button } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { createUser } from '../actions';
 import Input from '../components/Input';
 import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
+import MyHeader from '../components/MyHeader';
 
 class SignUpScreen extends Component {
   componentDidUpdate() {
@@ -68,7 +69,7 @@ class SignUpScreen extends Component {
   render() {
     return (
       <View>
-        <Header
+        <MyHeader
           backgroundColor='#7dc99f'
           leftComponent={<BackButton onPress={this.onBackPress} text='Back to Sign in'/>}
         />

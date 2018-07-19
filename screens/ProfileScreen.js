@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, FlatList, Dimensions } from 'react-native';
+import { View, FlatList, Dimensions, Platform } from 'react-native';
 import { Header, Card, ListItem, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import _ from 'lodash';
@@ -65,6 +65,7 @@ class ProfileScreen extends Component {
         <Header
           backgroundColor='#7dc99f'
           centerComponent={{ text: this.props.user.name, style: { color: '#fff', fontSize: 36 } }}
+          innerContainerStyle={{ paddingTop: Platform.OS === 'android' ? 24 : null }}
         />
         <Card title='Submissions'>
           <View style={{ height: 0.50 * SCREEN_HEIGHT }}>

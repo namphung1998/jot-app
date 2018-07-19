@@ -105,7 +105,7 @@ class CircleListScreen extends Component {
   render() {
     console.log(this.data);
     return (
-      <View style={{ paddingTop: Platform.OS === 'android' ? 24 : null }}>
+      <View>
         <Header
           centerComponent={{ text: 'My Circles ', style: { color: '#fff', fontSize: 36 }}}
           backgroundColor='#7dc99f'
