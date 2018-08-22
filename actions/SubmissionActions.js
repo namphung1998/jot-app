@@ -56,21 +56,19 @@ export function fetchSubmissions(prompt) {
   }
 }
 
-export function fetchUserSubmissions(user) {
-  return async (dispatch, getState) => {
-    const { token } = getState().auth;
+export const fetchUserSubmissions = (user) => async (dispatch, getState) => {
+  const { token } = getState().auth;
 
-    try {
-      let { data } = await axios({
-        url: `${ROOT_URL}/users/${user.id}/submissions`,
-        method: 'get',
-        headers: { Authorization: token }
-      });
+  try {
+    let { data } = await axios({
+      url: `${ROOT_URL}/users/${user.id}/submissions`,
+      method: 'get',
+      headers: { Authorization: token },
+    });
 
-      dispatch({ type: FETCH_USER_SUBMISSIONS, payload: data });
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch({ type: FETCH_USER_SUBMISSIONS, payload: data });
+  } catch (err) {
+    console.log(err);
   }
 }
 

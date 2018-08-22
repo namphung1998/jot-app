@@ -1,118 +1,73 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, Platform } from 'react-native';
-import { Header, ListItem } from 'react-native-elements';
+import { View, Text, FlatList } from 'react-native';
+import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import MyHeader from '../components/MyHeader';
 import * as actions from '../actions';
 
-const ROOT_URL = 'https://shrouded-tundra-41496.herokuapp.com';
+const async = require('async');
 
 class CircleListScreen extends Component {
-  constructor(props) {
-    super(props);
+  // data = [
+  //   { id: 1, name: 'ENGL150-03', desc: 'This is the online circle for Intro to Creative Writing'}
+  // ];
 
-    this.state = {
-      data: [],
-      loading: false
-    }
+  componentWillMount() {
+    this.props.fetchCircles();
+    this.data = this.props.circles;
   }
 
   componentDidMount() {
     const willFocusSubscription = this.props.navigation.addListener(
       'willFocus',
       () => {
-        this.props.fetchCircles();
+        console.log('list mounted');
+        this.fetchData();
       }
+    );
+  }
+
+  fetchData() {
+    this.props.fetchCircles();
+
+    let _data = []
+
+    async.each(this.props.circles, async (item) => {
+      try {
+        let { data } = await axios({
+          url: `${ROOT_URL}/circles/${item.circle_id}`,
+          method: 'get',
+          headers: { Authorization: token }
+        });
+
+        _data.push(data);
+      } catch (err) {
+        console.log(err);
+      }
+    });
+
+    console.log(_data);
+
+    this.data = _data;
+  }
+
+  renderItem = ({ item }) => {
+    return (
+      <ListItem
+        title={item.name}
+        bottomDivider
+      />
     )
   }
 
-  componentWillMount() {
-    this.props.fetchCircles();
-    // this.fetchData(this.props);
-    const result = this.props.circles.map(async (item) => {
-      try {
-        let { data } = await axios({
-          url: `${ROOT_URL}/circles/${item.circle_id}`,
-          method: 'get',
-          headers: { Authorization: this.props.token }
-        });
-
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
-    });
-
-    Promise.all(result).then(completed => {
-      console.log(completed);
-      this.data = completed;
-      console.log(this.data);
-    });
-    console.log(this.data);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // this.fetchData(nextProps);
-    const result = nextProps.circles.map(async (item) => {
-      try {
-        let { data } = await axios({
-          url: `${ROOT_URL}/circles/${item.circle_id}`,
-          method: 'get',
-          headers: { Authorization: this.props.token }
-        });
-
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
-    });
-
-    Promise.all(result).then(completed => {
-      console.log(completed);
-      this.data = completed;
-      console.log(this.data);
-    });
-  }
-
-  fetchData(props) {
-    const result = props.circles.map(async (item) => {
-      try {
-        let { data } = await axios({
-          url: `${ROOT_URL}/circles/${item.circle_id}`,
-          method: 'get',
-          headers: { Authorization: props.token }
-        });
-
-        return data;
-      } catch (err) {
-        console.log(err);
-      }
-    });
-
-    Promise.all(result).then(completed => {
-      console.log(completed);
-      this.data = completed;
-      console.log(this.data);
-    });
-    // console.log(this.data);
-  }
-
-  renderItem({ item }) {
-    console.log(item)
-    return <ListItem title={item.name}/>
-  }
-
   render() {
-    console.log(this.data);
     return (
       <View>
-        <Header
-          centerComponent={{ text: 'My Circles ', style: { color: '#fff', fontSize: 36 }}}
-          backgroundColor='#7dc99f'
-        />
+        <MyHeader text='My Circles' backgroundColor='#7dc99f'/>
         <FlatList
           data={this.data}
-          renderItem={this.renderItem.bind(this)}
+          renderItem={this.renderItem}
           keyExtractor={(item, i) => String(i)}
         />
       </View>
@@ -120,11 +75,12 @@ class CircleListScreen extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { circles } = state.circle;
-  const { token } = state.auth;
 
-  return { circles, token };
+function mapStateToProps(state) {
+  return {
+    circles: state.circle.circles,
+    token: state.auth.token
+  };
 }
 
 export default connect(mapStateToProps, actions)(CircleListScreen);

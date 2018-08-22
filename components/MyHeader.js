@@ -15,6 +15,6 @@ const MyHeader = (props) => {
       />
     </View>
   );
-}
+};
 
 export default MyHeader;

@@ -1,10 +1,13 @@
 import axios from 'axios';
+import _ from 'lodash';
 import {
+  FETCH_MEMBERSHIPS,
   FETCH_CIRCLES,
   CREATE_CIRCLE,
   CREATE_CIRCLE_SUCCESS
 } from './types';
 
+const async = require('async');
 const ROOT_URL = require('../constants');
 
 export const fetchCircles = () => async (dispatch, getState) => {

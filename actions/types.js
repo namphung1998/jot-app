@@ -19,5 +19,6 @@ export const SELECT_SUBMISSION = 'select_submission';
 export const FETCH_USER_SUBMISSIONS = 'fetch_user_submissions';
 export const CLEAR_REVIEW = 'clear_review';
 export const FETCH_CIRCLES = 'fetch_circles';
+export const FETCH_MEMBERSHIPS = 'fetch_memberships';
 export const CREATE_CIRCLE = 'create_circle';
 export const CREATE_CIRCLE_SUCCESS = 'create_circle_success';
