@@ -1,4 +1,5 @@
 import {
+  FETCH_MEMBERSHIPS,
   FETCH_CIRCLES,
   CREATE_CIRCLE,
   CREATE_CIRCLE_SUCCESS
@@ -16,8 +17,10 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, loading: true };
     case CREATE_CIRCLE_SUCCESS:
       return { ...state, loading: false };
+    case FETCH_MEMBERSHIPS:
+      return { ...state, loading: true };
     case FETCH_CIRCLES:
-      return { ...state, ...INITIAL_STATE, circles: action.payload }
+      return { ...INITIAL_STATE, circles: action.payload }
     default:
       return state;
   }
