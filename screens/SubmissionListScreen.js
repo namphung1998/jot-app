@@ -66,8 +66,6 @@ function mapStateToProps(state) {
     return { ...val };
   });
 
-  console.log(submissions);
-
   return {
     submissions,
     token: state.auth.token,

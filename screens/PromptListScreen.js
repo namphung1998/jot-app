@@ -57,7 +57,6 @@ class PromptListScreen extends Component {
 function mapStateToProps(state) {
   return {
     prompts: state.prompts,
-    token: state.auth.token
   };
 }
 

@@ -17,10 +17,20 @@ class CircleListScreen extends Component {
     this.data = nextProps.circles;
   }
 
+  // componentDidMount() {
+  //   this.props.fetchCircles();
+  //   this.data = this.props.circles;
+  // }
+  //
+  // componentDidUpdate() {
+  //   this.props.fetchCircles;
+  //   this.data = this.props.circles;
+  // }
+
   renderList() {
     if (this.props.loading) {
       return (
-        <Spinner />
+        <Spinner/>
       );
     }
 
@@ -39,7 +49,7 @@ class CircleListScreen extends Component {
         title={item.name}
         bottomDivider
       />
-    )
+    );
   }
 
   render() {

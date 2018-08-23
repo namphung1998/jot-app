@@ -28,17 +28,19 @@ class Slides extends Component {
     );
   }
 
+  onIndexChanged = (i) => {
+    if (i === this.props.data.length - 1) {
+      this.setState({ last: true });
+    } else {
+      this.setState({ last: false });
+    }
+  }
+
   render() {
     return (
       <Swiper
         showsButtons={!this.state.last}
-        onIndexChanged={(i) => {
-          if (i === this.props.data.length - 1) {
-            this.setState({ last: true });
-          } else {
-            this.setState({ last: false });
-          }
-        }}
+        onIndexChanged={this.onIndexChanged}
       >
         {this.renderSlides()}
       </Swiper>
