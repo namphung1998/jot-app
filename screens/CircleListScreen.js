@@ -17,15 +17,15 @@ class CircleListScreen extends Component {
     this.data = nextProps.circles;
   }
 
-  // componentDidMount() {
-  //   this.props.fetchCircles();
-  //   this.data = this.props.circles;
-  // }
-  //
-  // componentDidUpdate() {
-  //   this.props.fetchCircles;
-  //   this.data = this.props.circles;
-  // }
+  componentDidMount() {
+    const willFocusSubscription = this.props.navigation.addListener(
+      'willFocus',
+      () => {
+        this.props.fetchCircles();
+        this.data = this.props.circles;
+      }
+    );
+  }
 
   renderList() {
     if (this.props.loading) {
@@ -46,11 +46,11 @@ class CircleListScreen extends Component {
   renderItem = ({ item }) => {
     return (
       <ListItem
-        title={item.name}
+        title={item.title}
         bottomDivider
       />
     );
-  }
+  };
 
   render() {
     return (
