@@ -13,6 +13,25 @@ function createCircleSuccess(dispatch) {
   dispatch({ type: CREATE_CIRCLE_SUCCESS });
 }
 
+export const createCircle = ({ name, desc, privacy }) => async (dispatch, getState) => {
+  const { token, user } = getState().auth;
+
+  try {
+    dispatch({ type: CREATE_CIRCLE });
+
+    await axios({
+      url: `${ROOT_URL}/circles`,
+      method: 'post',
+      data: { name, desc, privacy, user_id: user.id },
+      headers: { Authorization: token }
+    });
+
+    createCircleSuccess(dispatch);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export const fetchCircles = () => async (dispatch, getState) => {
   const { token, user } = getState().auth;
 
